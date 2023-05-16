@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'">
+  <title>Products</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+  <h1>Products</h1>
+  <table>
+    <thead>
+      <tr id="headerRow"></tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+  </table>
+  <script>
+    async function loadData() {
+      const responseLatest = await fetch('/latest');
+      if (responseLatest.status === 404) {
+        alert('No files found. Please upload a file.');
+        return;
+      }
+      const { latest } = await responseLatest.json();
+
+      const response = await fetch(`/view/${encodeURIComponent(latest)}`);
+      const data = await response.json();
+      const keys = Object.keys(data[0]);
+
+      const headerRow = document.getElementById('headerRow');
+      keys.forEach(key => {
+        const th = document.createElement('th');
+        th.textContent = key;
+        headerRow.appendChild(th);
+      });
+
+      const tableBody = document.getElementById('tableBody');
+      data.forEach(row => {
+        const tr = document.createElement('tr');
+        keys.forEach(key => {
+          const td = document.createElement('td');
+          td.textContent = row[key];
+          tr.appendChild(td);
+        });
+        tableBody.appendChild(tr);
+      });
+    }
+    loadData();
+  </script>
+</body>
+</html>
