@@ -1,0 +1,110 @@
+:root {
+  --primary-color: #4a4a4a;
+  --secondary-color: #6c757d;
+  --success-color: #198754;
+  --info-color: #0dcaf0;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+  --light-color: #f8f9fa;
+  --dark-color: #212529;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--light-color);
+}
+
+header.navbar {
+  background-color: var(--primary-color);
+}
+
+.card-header {
+  background-color: var(--primary-color);
+}
+
+.user-item {
+  display: flex;
+  flex-wrap: wrap; /* Add wrap for smaller screens */
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1; /* Add this to let user-info take up the remaining space */
+}
+
+.file-select {
+  flex-grow: 1;
+  width: 100%; /* Change width to 100% to make it fully responsive */
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+
+
+button.delete-btn {
+  background-color: var(--danger-color);
+  border: none;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button.bind-btn,
+button.unbind-btn {
+  background-color: var(--primary-color);
+  border: none;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.file-name.bound {
+  color: var(--success-color);
+  margin-right: 0.5rem;
+}
+
+.tick-icon {
+  color: var(--success-color);
+  font-size: 1.25rem;
+  vertical-align: middle;
+}
+
+.file-select {
+  flex-grow: 1;
+  width: 150px; /* Set a fixed width for the drop-down menu */
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+
+button.bind-btn {
+  background-color: var(--success-color); /* Update the bind button color */
+  border: none;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button.unbind-btn {
+  background-color: var(--warning-color); /* Update the unbind button color */
+  border: none;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+}
